@@ -4,6 +4,20 @@
   box-sizing: border-box;
 }
 
+:root {
+  --primary-color: #121212;
+  --secondary-color: #F5F5F5;
+}
+
+.light {
+  --primary-color: #F5F5F5;
+  --secondary-color: #121212;
+}
+
+body {
+  background: var(--primary-color);
+}
+
 .form-control:focus {
   box-shadow: none;
   border: 1px solid #ced4da;

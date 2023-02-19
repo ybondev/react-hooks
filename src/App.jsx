@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
@@ -17,6 +17,29 @@ function App() {
 
     setVal(newValue);
   };
+
+  // DARK MODE
+  const [theme, setTheme] = useState("dark");
+
+  const DARK_MODE = () => {
+    if(theme === "dark") {
+      setTheme("light")
+
+      localStorage.setItem("mode", "light");
+    }
+    else {
+      setTheme("dark");
+
+      localStorage.setItem("mode", "dark");
+    }
+  }
+
+  useEffect(() => {
+    document.body.className = theme;
+
+    const CURRENT_MODE = localStorage.getItem("mode");
+    setTheme(CURRENT_MODE);
+  }, [theme])
 
   return (
     <div className="App">
@@ -54,6 +77,9 @@ function App() {
               </div>
             </div>
           </div>
+        </div>
+        <div className="dark-mode">
+          <button className="btn btn-warning" onClick={DARK_MODE}>Toggle</button>
         </div>
       </div>
     </div>
